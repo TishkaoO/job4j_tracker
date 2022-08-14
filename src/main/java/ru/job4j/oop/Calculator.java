@@ -7,7 +7,7 @@ public class Calculator {
         return x + y;
     }
 
-    public static int minus (int z) {
+    public static int minus(int z) {
         return z - x;
     }
 
