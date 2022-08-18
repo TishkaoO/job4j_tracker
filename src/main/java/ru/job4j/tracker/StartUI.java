@@ -7,7 +7,7 @@ public class StartUI {
         Item item = new Item();
         item.getCreated();
         LocalDateTime created = LocalDateTime.now();
-        System.out.println("dd-MMMM-EEEE-yyyy HH:mm:ss" + " " +created);
+        System.out.println("dd-MMMM-EEEE-yyyy HH:mm:ss" + " " + created);
 
     }
 }
