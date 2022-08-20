@@ -10,8 +10,6 @@ public class Item {
     public Item() {
     }
 
-
-
     public Item(LocalDateTime created) {
         this.created = created;
     }
@@ -44,5 +42,4 @@ public class Item {
     public LocalDateTime getCreated() {
         return created;
     }
-
 }
