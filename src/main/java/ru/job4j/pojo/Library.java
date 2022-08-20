@@ -20,7 +20,7 @@ public class Library {
         books[3] = temp;
         for (int i = 0; i < books.length; i++) {
             Book tmp = books[i];
-            if (tmp.getAmountPage() > 999) {
+            if ("Чистый код".equals(tmp.getName())) {
                 System.out.println(tmp.getName() + " - " + tmp.getAmountPage());
             }
         }
