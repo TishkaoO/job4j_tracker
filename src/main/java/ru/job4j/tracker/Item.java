@@ -10,10 +10,6 @@ public class Item {
     public Item() {
     }
 
-    public Item(LocalDateTime created) {
-        this.created = created;
-    }
-
     public Item(String name) {
        this.name = name;
     }
