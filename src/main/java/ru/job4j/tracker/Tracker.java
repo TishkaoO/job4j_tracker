@@ -20,7 +20,7 @@ public class Tracker {
             Item tmp = items[i];
             if (tmp != null) {
                 rsl[size1] = tmp;
-                size1 ++;
+                size1++;
             }
         }
         rsl = Arrays.copyOf(rsl, size);
@@ -36,8 +36,7 @@ public class Tracker {
         for (int i = 0; i < size; i++) {
             Item tmp1 = items[i];
             if (tmp1.getName().equals(key)) {
-                rsl1[s] = tmp1;
-                s++;
+                rsl1[s++] = tmp1;
             }
         }
         return Arrays.copyOf(rsl1, s);
