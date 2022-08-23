@@ -20,12 +20,12 @@ public class StartUI {
                 run = false;
             } else if (select == 1) {
                 System.out.println("=== Show all items ===");
-                Item [] items = tracker.findAll();
+                Item[] items = tracker.findAll();
                 for (Item item : items) {
                     System.out.println(item);
                 }
             }
-            Item [] items = tracker.findAll();
+            Item[] items = tracker.findAll();
             if (items.length > 0) {
                 for (Item item : items) {
                     System.out.println(item);
