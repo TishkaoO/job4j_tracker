@@ -43,7 +43,7 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find item by id ===");
-                int id =input.askInt("Select: ");
+                int id = input.askInt("Select: ");
                 Item item = tracker.findById(id);
                 if (item != null) {
                     System.out.println(item);
