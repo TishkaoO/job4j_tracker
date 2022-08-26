@@ -14,4 +14,15 @@ public class StartUITest {
         Item expected = new Item("Fix PC");
         assertThat(created.getName()).isEqualTo(expected.getName());
     }
+
+    @Test
+    public void whenDeleteItem() {
+        Tracker tracker = new Tracker();
+        Item item = new Item(1, "new item");
+        tracker.add(item);
+        String[] answers = {Integer.toString(item.getId())};
+        StartUI.deleteItem(new StubInput(answers), tracker);
+        Item del = tracker.findById(Integer.parseInt(answers[0]));
+        assertThat(del);
+    }
 }
