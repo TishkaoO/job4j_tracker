@@ -30,12 +30,12 @@ public class StartUI {
         Tracker tracker = new Tracker();
         UserAction[] actions = {
                 new CreateAction(output),
-                new ShowAllAction(),
-                new EditAction(),
-                new DeleteAction(),
-                new FindItemIdAction(),
-                new FindItemNameAction(),
-                new ExitAction()
+                new ShowAllAction(output),
+                new EditAction(output),
+                new DeleteAction(output),
+                new FindItemIdAction(output),
+                new FindItemNameAction(output),
+                new ExitAction(output)
         };
         new StartUI(output).init(input, tracker, actions);
     }
