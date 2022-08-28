@@ -19,10 +19,10 @@ public class StartUITest {
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
         assertThat(out.toString()).isEqualTo(
-                "Menu:" + ln
+                "Menu." + ln
                         + "0. Exit Program" + ln
-                        + "Wrong input, you can select: 0 .. 0" + ln
-                        + "Menu:" + ln
+                        + "Wrong input, you can select: 0 ..0" + ln
+                        + "Menu." + ln
                         + "0. Exit Program" + ln
                         + "=== Exit Program ===" + ln
         );
