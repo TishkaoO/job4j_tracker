@@ -9,7 +9,6 @@ public class FactRec {
         }
         return n;
     }
-    
 
     public static void main(String[] args) {
         int rsl = calc(3);
