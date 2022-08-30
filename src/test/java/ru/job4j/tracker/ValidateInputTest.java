@@ -32,11 +32,17 @@ public class ValidateInputTest {
     public void whenMultipleCorrectInvalidInput() {
         Output out = new StubOutput();
         Input in = new StubInput(
-                new String[]{"1", "1", "1", "1"}
+                new String[]{"1", "4", "3", "5"}
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
+        int selected1 = input.askInt("Enter menu:");
+        int selected2 = input.askInt("Enter menu:");
+        int selected3 = input.askInt("Enter menu:");
         assertThat(selected).isEqualTo(1);
+        assertThat(selected1).isEqualTo(4);
+        assertThat(selected2).isEqualTo(3);
+        assertThat(selected3).isEqualTo(5);
     }
 
     @Test
@@ -47,6 +53,8 @@ public class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu:");
+        int selected1 = input.askInt("Enter menu:");
         assertThat(selected).isEqualTo(-1);
+        assertThat(selected).isEqualTo(1);
     }
 }
