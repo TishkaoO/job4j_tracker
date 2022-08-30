@@ -24,16 +24,14 @@ public class UserStore {
         };
         User user = null;
         try {
-            user = findUser(users, "Petr Arsentev");
-        } catch (UserNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            if (validate(user)) {
-                System.out.println("This user has an access");
+            User user1 = findUser(users, "Petr Arsentev");
+            if (user != null && validate(user)) {
+                System.out.println("This user has an access ");
             }
         } catch (UserInvalidException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+        } catch (UserNotFoundException e) {
+            e.printStackTrace();
         }
     }
 }
