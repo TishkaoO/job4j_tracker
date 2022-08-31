@@ -21,7 +21,7 @@ public class SingleTracker {
     }
 
     public Item findById(int id) {
-        return null;
+        return tracker.findById(id);
     }
 
     public Item[] findAll() {
@@ -33,11 +33,11 @@ public class SingleTracker {
     }
 
     public boolean replace(int id, Item item) {
-        return true;
+        return tracker.replace(id, item);
     }
 
     public boolean delete(int id) {
-        return true;
+        return delete(id);
     }
 
     public static void main(String[] args) {
