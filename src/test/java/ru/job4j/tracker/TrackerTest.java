@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TrackerTest{
+public class TrackerTest {
     @Test
     public void whenTestFindById() {
         Tracker tracker = new Tracker();
