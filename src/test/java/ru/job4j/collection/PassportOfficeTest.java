@@ -17,7 +17,7 @@ public class PassportOfficeTest {
     }
 
     @Test
-    public void add2() {
+    public void whenAddDuplicate() {
         Citizen citizen = new Citizen("2f44a", "Petr Arsentev");
         Citizen citizen2 = new Citizen("2f44a", "Vova Sobol");
         PassportOffice office = new PassportOffice();
