@@ -38,7 +38,7 @@ public class TrackerTest {
         tracker.add(new Item("Second"));
         tracker.add(new Item("First"));
         List<Item> result = tracker.findByName(first.getName());
-        assertThat(result.size()).isEqualTo(3);
+        assertThat(result.size()).isEqualTo(5);
     }
 
     @Test
