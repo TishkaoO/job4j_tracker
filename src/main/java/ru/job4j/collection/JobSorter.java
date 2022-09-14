@@ -2,6 +2,7 @@ package ru.job4j.collection;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class JobSorter {
@@ -11,9 +12,13 @@ public class JobSorter {
                 new Job("Impl task", 2),
                 new Job("Reboot server", 1)
         );
-        Collections.sort(jobs);
+        Collections.sort(jobs, new JobDescByName().thenComparing(new JobDescByName()));
         System.out.println(jobs);
-        jobs.sort(new SortDescByNameJob());
-        System.out.println(jobs);
+        Comparator<Job> comb = new JobDescByNameLn()
+                .thenComparing(new JobDescByName())
+                .thenComparing(new JobDescByPriority())
+                .thenComparing(new JobAscByPriority())
+                .thenComparing(new JobAscByName());
+        Collections.sort(jobs, comb);;
     }
 }
