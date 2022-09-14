@@ -19,6 +19,6 @@ public class JobSorter {
                 .thenComparing(new JobDescByPriority())
                 .thenComparing(new JobAscByPriority())
                 .thenComparing(new JobAscByName());
-        Collections.sort(jobs, comb);;
+        Collections.sort(jobs, comb);
     }
 }
