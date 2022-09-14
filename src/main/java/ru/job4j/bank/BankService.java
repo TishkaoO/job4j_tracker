@@ -1,28 +1,21 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class BankService {
     private final Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (users.containsKey(user)) {
-            System.out.println("Такой пользователь уже существует");
-        } else {
-            List<Account> account = new ArrayList<>();
-            users.put(user, account);
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
-        if (user == null || users.get(user).contains(account)) {
-            System.out.println("Ошибка данных пользователя");
-        } else {
-            users.get(user).add(account);
+        if (user != null) {
+            List<Account> accounts = users.get(user);
+            if (!accounts.contains(account)) {
+                accounts.add(account);
+            }
         }
     }
 
@@ -31,6 +24,7 @@ public class BankService {
         for (User tmp : users.keySet()) {
             if (passport.equals(tmp.getPassport())) {
                 rsl = tmp;
+                break;
             }
         }
         return rsl;
@@ -39,13 +33,12 @@ public class BankService {
     public Account findByRequisite(String passport, String requisite) {
         Account result = null;
         User user = findByPassport(passport);
-        if (user == null) {
-            System.out.println("Пользователь не найден!");
-        } else {
+        if (user != null) {
             List<Account> accounts = users.get(user);
-            for (Account tmp : accounts) {
-                if (tmp.getRequisite().equals(requisite)) {
-                    result = tmp;
+            for (Account account : accounts) {
+                if (Objects.equals(account.getRequisite(), requisite)) {
+                    result = account;
+                    break;
                 }
             }
         }
