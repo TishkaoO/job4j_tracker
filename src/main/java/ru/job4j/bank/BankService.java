@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * Класс описывает модель банковской системы
- * @Author KirillK1o
+ * @author KirillK1o
  * @version 1.0
  */
 public class BankService {
