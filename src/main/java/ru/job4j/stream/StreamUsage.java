@@ -13,7 +13,7 @@ public class StreamUsage {
         }
     }
 
-    public  static void main(String[] args) {
+    public static void main(String[] args) {
         List<Task> tasks = List.of(
                 new Task("Bug #1", 10),
                 new Task("Task #2", 20),
