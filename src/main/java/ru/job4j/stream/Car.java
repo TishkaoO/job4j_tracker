@@ -66,8 +66,6 @@ public class Car {
             car.color = color;
             return car;
         }
-
-
     }
 
     public static void main(String[] args) {
