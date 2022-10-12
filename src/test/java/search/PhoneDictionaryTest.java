@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PhoneDictionaryTest {
+public class PhoneDictionaryTest  {
     @Test
     public void whenFindByName() {
         var phones = new PhoneDictionary();
