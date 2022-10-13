@@ -7,8 +7,8 @@ public class AnalyzeByMap {
         double totalScores = 0;
         double number = 0;
         for (Pupil pupil : pupils) {
-            List<Subject> subjects = pupil.subjects();
-            for (Subject subject : subjects) {
+            List<NewSubject> subjects = pupil.subjects();
+            for (NewSubject subject : subjects) {
                 double subjectScore = subject.score();
                 totalScores += subjectScore;
                 number++;
@@ -22,8 +22,8 @@ public class AnalyzeByMap {
         for (Pupil pupil : pupils) {
             double totalScores = 0;
             double number = 0;
-            List<Subject> subjects = pupil.subjects();
-            for (Subject subject : subjects) {
+            List<NewSubject> subjects = pupil.subjects();
+            for (NewSubject subject : subjects) {
                 double subjectScore = subject.score();
                 totalScores += subjectScore;
                 number++;
@@ -39,8 +39,8 @@ public class AnalyzeByMap {
         double pupilNumber = 0;
         for (Pupil pupil : pupils) {
             pupilNumber++;
-            List<Subject> subjects = pupil.subjects();
-            for (Subject subject : subjects) {
+            List<NewSubject> subjects = pupil.subjects();
+            for (NewSubject subject : subjects) {
                 int subjectScore = subject.score() + map.getOrDefault(subject.name(), 0);
                 map.put(subject.name(), subjectScore);
             }
@@ -56,8 +56,8 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         for (Pupil pupil : pupils) {
             double totalScores = 0;
-            List<Subject> subjects = pupil.subjects();
-            for (Subject subject: subjects) {
+            List<NewSubject> subjects = pupil.subjects();
+            for (NewSubject subject: subjects) {
                 double subjectScore = subject.score();
                 totalScores += subjectScore;
             }
@@ -71,8 +71,8 @@ public class AnalyzeByMap {
         List<Label> labels = new ArrayList<>();
         Map<String, Integer> map = new LinkedHashMap<>();
         for (Pupil pupil : pupils) {
-            List<Subject> subjects = pupil.subjects();
-            for (Subject subject : subjects) {
+            List<NewSubject> subjects = pupil.subjects();
+            for (NewSubject subject : subjects) {
                 int subjectScore = subject.score() + map.getOrDefault(subject.name(), 0);
                 map.put(subject.name(), subjectScore);
             }
