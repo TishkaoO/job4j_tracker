@@ -11,12 +11,15 @@ import java.util.stream.Stream;
  */
 public class Analyze {
 
+    /*
+    Метод вычисляет общий средний балл.
+     */
     public static double averageScore(Stream<Pupil> stream) {
         return stream
                 .flatMap(pupil -> pupil.subjects().stream())
                 .mapToInt(Subject::score)
                 .average()
-                .orElse(Double.NaN);
+                .orElse(0);
 
     }
 
@@ -30,7 +33,7 @@ public class Analyze {
                 .map(pupil -> new Tuple(pupil.name(), pupil.subjects().stream()
                         .mapToInt(Subject::score)
                         .average()
-                        .orElse(Double.NaN)
+                        .orElse(0)
                 ))
                 .collect(Collectors.toList());
     }
@@ -44,7 +47,7 @@ public class Analyze {
         return stream
                 .flatMap(pupil -> pupil.subjects().stream())
                 .collect(Collectors.groupingBy(subject -> subject.name(),
-                        LinkedHashMap::new, Collectors.averagingDouble(value -> value.score())))
+                        LinkedHashMap::new, Collectors.averagingDouble(Subject::score)))
                 .entrySet().stream()
                 .map(s -> new Tuple(s.getKey(), s.getValue()))
                 .collect(Collectors.toList());
@@ -71,8 +74,8 @@ public class Analyze {
     public static Tuple bestSubject(Stream<Pupil> stream) {
         return stream
                 .flatMap(pupil -> pupil.subjects().stream())
-                .collect(Collectors.groupingBy(Subject::name, LinkedHashMap::new,
-                        Collectors.summingDouble(value -> value.score())))
+                .collect(Collectors.groupingBy(Subject::name,
+                        Collectors.summingDouble(Subject::score)))
                 .entrySet().stream()
                 .map(s -> new Tuple(s.getKey(), s.getValue()))
                 .max(Comparator.comparing(Tuple::score))
