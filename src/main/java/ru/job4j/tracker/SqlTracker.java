@@ -5,7 +5,6 @@ import org.apache.log4j.Logger;
 
 import java.io.InputStream;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -45,13 +44,6 @@ public class SqlTracker implements Store {
         }
     }
 
-    private Timestamp setDateTime() {
-        long millis = System.currentTimeMillis();
-        Timestamp timestamp = new Timestamp(millis);
-        LocalDateTime localDateTime = timestamp.toLocalDateTime();
-        return Timestamp.valueOf(localDateTime);
-    }
-
     private Item setItem(ResultSet resultSet) {
         try {
             return new Item(resultSet.getInt("id"),
@@ -68,7 +60,7 @@ public class SqlTracker implements Store {
                      connection.prepareStatement("insert into items (name, created) values (?, ?)",
                              Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, item.getName());
-            statement.setTimestamp(item.getId(), setDateTime());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
             statement.execute();
             try (ResultSet generetedKeys = statement.getGeneratedKeys()) {
                 if (generetedKeys.next()) {
@@ -85,10 +77,10 @@ public class SqlTracker implements Store {
     public boolean replace(int id, Item item) {
         boolean result = false;
         try (PreparedStatement statement =
-                     connection.prepareStatement("insert items set name = ? where id = ?")) {
-            statement.setString(id, item.getName());
-            statement.setTimestamp(2, setDateTime());
-            statement.setInt(item.getId(), id);
+                     connection.prepareStatement("update items set name = ?, created = ? where id = ?")) {
+            statement.setString(1, item.getName());
+            statement.setTimestamp(2, Timestamp.valueOf(item.getCreated()));
+            statement.setInt(3, id);
             result = statement.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.error(e.getMessage(), e);
@@ -116,8 +108,6 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     items.add(setItem(resultSet));
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage(), e);
@@ -135,8 +125,6 @@ public class SqlTracker implements Store {
                 while (resultSet.next()) {
                     items.add(setItem(resultSet));
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage(), e);
@@ -154,8 +142,6 @@ public class SqlTracker implements Store {
                 if (resultSet.next()) {
                     result = setItem(resultSet);
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
             }
         } catch (SQLException e) {
             LOGGER.error(e.getMessage(), e);
