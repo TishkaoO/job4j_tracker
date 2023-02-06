@@ -1,7 +1,10 @@
 package ru.job4j.tracker;
 
+import lombok.Data;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+@Data
 public class Item {
     private LocalDateTime created = LocalDateTime.now();
     private static final DateTimeFormatter FORMATTER =
