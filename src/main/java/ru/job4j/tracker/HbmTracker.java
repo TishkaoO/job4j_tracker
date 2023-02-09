@@ -24,6 +24,8 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return item;
     }
@@ -44,6 +46,8 @@ public class HbmTracker implements Store, AutoCloseable {
             result = count > 0;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
@@ -62,6 +66,8 @@ public class HbmTracker implements Store, AutoCloseable {
             result = count > 0;
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
@@ -76,6 +82,8 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
@@ -93,6 +101,8 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
@@ -110,6 +120,8 @@ public class HbmTracker implements Store, AutoCloseable {
             result = query.uniqueResult();
         } catch (Exception e) {
             session.getTransaction().rollback();
+        } finally {
+            session.close();
         }
         return result;
     }
